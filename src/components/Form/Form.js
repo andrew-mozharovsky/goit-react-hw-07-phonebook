@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import phonebookActions from '../../redux/phonebook/phonebook-actions';
+import { phonebookOperations, getContacts } from '../../redux/phonebook';
+
 import { CSSTransition } from 'react-transition-group';
 import Alert from '../Alert';
 
@@ -93,12 +94,12 @@ class Form extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  contacts: state.phonebook.contacts,
+  contacts: getContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   addContact: (name, number) =>
-    dispatch(phonebookActions.addContact(name, number)),
+    dispatch(phonebookOperations.addContact(name, number)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

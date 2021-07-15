@@ -8,16 +8,20 @@ import Filter from './components/Filter';
 import styles from './App.module.scss';
 
 const App = () => {
+  const nodeRef = React.useRef(null);
   return (
     <section className={styles.container}>
       <CSSTransition
+        nodeRef={nodeRef}
         in={true}
         appear={true}
         timeout={500}
         classNames={{ ...styles }}
         unmountOnExit
       >
-        <h1 className={styles.title}>Phonebook</h1>
+        <h1 ref={nodeRef} className={styles.title}>
+          Phonebook
+        </h1>
       </CSSTransition>
 
       <Form></Form>

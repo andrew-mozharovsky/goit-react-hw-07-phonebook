@@ -1,40 +1,19 @@
-import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios';
-
 import { createAction } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:4040';
+export const fetchContactRequest = createAction('contact/fetchContactRequest');
+export const fetchContactSuccess = createAction('contact/fetchContactSuccess');
+export const fetchContactError = createAction('contact/fetchContactError');
 
-const addContact = (name, number) => dispatch => {
-  const contact = {
-    name,
-    number,
-  };
-  axios
-    .post('/contacts', contact)
-    .then(({ data }) =>
-      dispatch({ type: 'contact/addContactSuccess', payload: data }),
-    )
-    .catch(error =>
-      dispatch({ type: 'contact/addContactSuccess', paload: error }),
-    );
-};
+export const addContactRequest = createAction('contact/addContactRequest');
+export const addContactSuccess = createAction('contact/addContactSuccess');
+export const addContactError = createAction('contact/addContactError');
 
-// const addContact = createAction('phonebook/add', (name, number) => {
-//   return {
-//     payload: {
-//       name,
-//       number,
-//     },
-//   };
-// });
+export const deleteContactRequest = createAction(
+  'contact/deleteContactRequest',
+);
+export const deleteContactSuccess = createAction(
+  'contact/deleteContactSuccess',
+);
+export const deleteContactError = createAction('contact/deleteContactError');
 
-const deleteContact = createAction('phonebook/delete');
-const contact_filter = createAction('phonebook/contact_filter');
-
-const actions = {
-  addContact,
-  deleteContact,
-  contact_filter,
-};
-export default actions;
+export const contact_filter = createAction('phonebook/contact_filter');

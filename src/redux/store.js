@@ -1,4 +1,4 @@
-import phonebookReduser from './phonebook/phonebook-reducer';
+import { phonebookReducer } from './phonebook';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   FLUSH,
@@ -26,7 +26,7 @@ const middleware = [
 
 const store = configureStore({
   reducer: {
-    phonebook: phonebookReduser,
+    phonebook: phonebookReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
